@@ -25,19 +25,13 @@ class MainActivity : AppCompatActivity() {
 
 //        rv_movie?.layoutManager = LinearLayoutManager(this@MainActivity)
 //        rv_movie?.adapter = movieAdapter
-        //same
+        //s
         rv_movie?.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = movieAdapter
         }
 
-        val retrofit : Retrofit = Retrofit.Builder()
-                .baseUrl("https://workshopup.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-        val apiaries = retrofit.create(API ::class.java)
-
-        apiaries.getMovie()
+        Retrofit_Movie.getapi().getMovie()
                 .enqueue(object : Callback<Movie>{
 
                     override fun onResponse(call: Call<Movie>?, response: Response<Movie>?) {
@@ -54,36 +48,7 @@ class MainActivity : AppCompatActivity() {
                 })
 
     }
-    inner class MovieAdapter :RecyclerView.Adapter<MovieAdapter.ViewHolder>(){
-        private var listMovie : List<Result> = listOf()
-        fun setMovies(data: List<Result>) {
-
-            listMovie = data
-            notifyDataSetChanged()
-        }
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.cardview_movie, parent, false))
-        }
-
-        override fun getItemCount(): Int {
-            return listMovie.size
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int)  {
-            holder.onBindData(listMovie[position])
-        }
-
-        inner class ViewHolder (view : View): RecyclerView.ViewHolder(view){
-            fun onBindData(list: Result?) {
-
-                Glide.with(itemView.context).load(list?.image_url).into(itemView.iv_image_url)
-                itemView.tv_title.text = list?.title
-            }
-
-
-        }
-
 
     }
-    }
+
 
