@@ -8,6 +8,7 @@ import retrofit2.Call
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.cardview_movie.view.*
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        rv_movie?.layoutManager = LinearLayoutManager(this@MainActivity)
+//        rv_movie?.adapter = movieAdapter
+        //same
         rv_movie?.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = movieAdapter
