@@ -2,6 +2,7 @@ package com.example.napat.cardview_retrofit
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -36,12 +37,11 @@ class MovieAdapter (var context: Context): RecyclerView.Adapter<MovieAdapter.Vie
             Glide.with(itemView.context).load(list?.image_url).into(itemView.iv_image_url)
             itemView.tv_title.text = list?.title
             itemView.setOnClickListener {
-                    var intent = Intent(context,test ::class.java)
+                    val intent = Intent(context,test ::class.java)
+                    var bundle = Bundle()
+                    bundle.putParcelable("Movie_list",list)
                     intent.apply {
-                        putExtra("image",list?.image_url)
-                        putExtra("title",list?.title)
-                        putExtra("overview",list?.overview)
-                        putExtra("test",list.toString())
+                        putExtra("MyBundle",bundle)
                         context.startActivity(this)
                     }
             }

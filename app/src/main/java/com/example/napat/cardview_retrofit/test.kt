@@ -12,9 +12,11 @@ class test : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
-        val title  = intent.extras.getString("title")
-        val image_url = intent.extras.getString("image")
-        val overview = intent.extras.getString("overview")
+        val bundle = intent.getBundleExtra("MyBundle")
+        var Movielist = bundle.getParcelable<Result>("Movie_list")
+        val title  = Movielist.title
+        val image_url = Movielist.image_url
+        val overview = Movielist.overview
         title_view.text = title
         Glide.with(this).load(image_url).into(Image_View)
         overview_view.text = overview
