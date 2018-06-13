@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-    private var movieAdapter : MovieAdapter = MovieAdapter()
+    private var movieAdapter : MovieAdapter = MovieAdapter(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = movieAdapter
         }
+
 
         Retrofit_Movie.getapi().getMovie()
                 .enqueue(object : Callback<Movie>{
