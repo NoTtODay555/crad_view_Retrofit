@@ -11,11 +11,11 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.cardview_movie.view.*
 
 class MovieAdapter (var context: Context): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
-    private var listMovie: List<Result> = listOf() // List
-    var Movielist = ArrayList<Result>()     // ArrayList
+//    private var listMovie: List<Result> = listOf() // List
+    var movielist = ArrayList<Result>()     // ArrayList
     fun setMovies(data: List<Result>) {
-        Movielist.addAll(data)      // add List in array
-        listMovie = data    //  list = list
+        movielist.addAll(data)      // add List in array
+//        listMovie = data    //  list = list
         notifyDataSetChanged()
     }
 
@@ -24,28 +24,23 @@ class MovieAdapter (var context: Context): RecyclerView.Adapter<MovieAdapter.Vie
     }
 
     override fun getItemCount(): Int {
-        return Movielist.size
+        return movielist.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBindData(Movielist[position])
+        holder.onBindData(movielist[position])
     }
 
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun onBindData(list: Result?) {
-            Glide.with(itemView.context).load(list?.image_url).into(itemView.iv_image_url)
+            Glide.with(itemView.context).load(list?.imageUrl).into(itemView.iv_image_url)
             itemView.tv_title.text = list?.title
             itemView.setOnClickListener {
-                    val intent = Intent(context,test ::class.java)
-                    var bundle = Bundle()
-                    bundle.putParcelable("Movie_list",list)
-                    intent.apply {
-                        putExtra("MyBundle",bundle)
-                        context.startActivity(this)
-                    }
+                    context.startActivity(Intent(context,
+                                                    ViewMovieActivity::class.java)
+                                                    .putExtra("Movie",list))
             }
         }
-
     }
 }

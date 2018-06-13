@@ -1,6 +1,5 @@
 package com.example.napat.cardview_retrofit
 
-import android.annotation.SuppressLint
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -12,8 +11,8 @@ data class Movie(
 
 data class Result(
         @SerializedName("title")val title: String? = null,
-        @SerializedName("image_url")val image_url: String? = null,
-        @SerializedName("overview")val overview: String? = null
+        @SerializedName("image_url")val imageUrl: String? = null,
+        @SerializedName("overview")val overView: String? = null
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
@@ -23,8 +22,8 @@ data class Result(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(title)
-        parcel.writeString(image_url)
-        parcel.writeString(overview)
+        parcel.writeString(imageUrl)
+        parcel.writeString(overView)
     }
 
     override fun describeContents(): Int {
