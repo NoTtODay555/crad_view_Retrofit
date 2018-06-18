@@ -1,4 +1,4 @@
-package com.example.napat.cardview_retrofit
+package com.example.napat.cardview_retrofit.Model
 
 import android.os.Parcel
 import android.os.Parcelable

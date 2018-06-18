@@ -1,4 +1,4 @@
-package com.example.napat.cardview_retrofit
+package com.example.napat.cardview_retrofit.Model
 
 import retrofit2.Call
 import retrofit2.http.GET

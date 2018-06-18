@@ -1,4 +1,4 @@
-package com.example.napat.cardview_retrofit
+package com.example.napat.cardview_retrofit.Model
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -8,5 +8,5 @@ class Retrofit {
             .baseUrl("https://workshopup.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    fun getapi() = retrofit().create(Api ::class.java)
+    fun getApi(): Api? = retrofit().create(Api::class.java)
 }
