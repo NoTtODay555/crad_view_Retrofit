@@ -6,5 +6,6 @@ interface ConstutorPrecenter{
     interface main{
         fun getApi()
         fun getListdata(a: List<Result>?)
+        fun getsearch(titelchar : String)
     }
 }
